@@ -1,0 +1,108 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace dziedziczenie
+{
+    class KontoBankowe
+    {
+        private int _numerKonta;
+        private string _wlastitiel;
+        private double _saldo;
+
+        public int NumerKonta
+        {
+            get { return _numerKonta; }
+            set
+            {
+                    _numerKonta = value;
+            }
+        }
+        public string Wlastitiel
+        {
+            get { return _wlastitiel; }
+            set
+            {
+                    _wlastitiel = value;
+
+            }
+        }
+        public double Saldo
+        {
+            get { return _saldo; }
+            set { _saldo = value; }
+        }
+        internal class Program
+        {
+            static void Main(string[] args)
+            {
+                KontoBankowe konto = new KontoBankowe();
+
+                Console.Write("Podaj numer konta: ");
+                konto.NumerKonta = int.Parse(Console.ReadLine());
+
+                Console.Write("Podaj imię właściciela: ");
+                konto.Wlastitiel = Console.ReadLine();
+
+                konto.Saldo = 0;
+
+                DisplayMenu(konto);
+            }
+
+            private static void DisplayMenu(KontoBankowe konto)
+            {
+                bool end = true;
+                while (end)
+                {
+                    Console.WriteLine("Wybierz operacje: \n");
+                    Console.WriteLine("1. Wpłać kwotę");
+                    Console.WriteLine("2. Wypłać kwotę");
+                    Console.WriteLine("3. Sprawdż aktualnu stan konta");
+                    Console.WriteLine("4. Zakończ program");
+                    string choose = Console.ReadLine();
+                    switch (choose)
+                    {
+                        case "1":
+                            ShowWplata(konto);
+                            break;
+                        case "2":
+                            ShowWyplata(konto);
+                            break;
+                        case "3":
+                            ShowSaldo(konto);
+                            break;
+                        case "4":
+                            end = false; break;
+                    }
+                }
+
+            }
+
+            private static void ShowSaldo(KontoBankowe konto)
+            {
+                Console.WriteLine($"Aktualny stan konta to {konto.Saldo}");
+            }
+
+            private static void ShowWyplata(KontoBankowe konto)
+            {
+                Console.WriteLine("ok");
+            }
+
+            private static void ShowWplata(KontoBankowe konto)
+            {
+                Console.WriteLine("Podaj kwotę którą chcesz wpłacić");
+                if(double.TryParse(Console.ReadLine(), out double kwota) && kwota > 0)
+                {
+                    konto.Saldo += kwota;
+                    Console.WriteLine($"Wpłacono {kwota}. Nowe saldo: {konto.Saldo}");
+                }
+                else
+                {
+                    Console.WriteLine("Niepoprawna kwota.");
+                }
+            }
+        }
+    }
+}
