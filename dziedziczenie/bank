@@ -1,3 +1,27 @@
+Napisz klasę KontoBankowe, która posiada pola:
+
+numer konta (String/int),
+
+właściciel (String),
+
+saldo (double).
+
+Dodaj metody:
+
+wplata(double kwota) – zwiększa saldo,
+
+wyplata(double kwota) – zmniejsza saldo, jeśli kwota nie przekracza dostępnych środków,
+
+sprawdzSaldo() – wypisuje aktualny stan konta.
+
+Dodatkowo:
+
+przy wypłacie sprawdź warunkiem, czy saldo ≥ kwota,
+
+zbuduj prostą pętlę menu (switch-case lub if-else), w której użytkownik może dokonywać wpłat, wypłat i sprawdzać saldo.
+
+
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
