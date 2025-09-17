@@ -1,0 +1,92 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace uczen
+{
+    class Uczen
+    {
+        private string _name;
+        private string _surname;
+
+        private List<int> _list;
+
+
+        public string Name { get => _name; set => _name = value; }
+        public string Surname { get => _surname; set => _surname = value; }
+        public List<int> list { get => _list; set => _list = value; }
+        public Uczen()
+        {
+            _list = new List<int>();
+        }
+
+        public void dodajOcene(int ocena)
+        {
+            if ((ocena >= 1) && (ocena <= 6))
+            {
+                _list.Add(ocena);
+            }
+        }
+        public int obliczSrednia()
+        {
+            if (_list.Count == 0) return 0;
+            int suma = 0;
+            foreach (var item in _list)
+            {
+                suma += item;
+            }
+            return suma / _list.Count;
+        }
+        public void wypiszOceny()
+        {
+            foreach (int ocena in _list)
+            {
+                Console.WriteLine(ocena);
+            }
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Uczen uczen = new Uczen();
+            
+
+            Console.WriteLine("Podaj imię ucznia; \n");
+            uczen.Name = Console.ReadLine();
+            Console.WriteLine("Podaj nazwisko ucznia; \n");
+            uczen.Surname = Console.ReadLine();
+
+            bool end = true;
+            while (end)
+            {
+                Console.WriteLine("1. Dodaj ocenę:\n");
+                Console.WriteLine("2. Oblicz średnią wszystkich ocen:\n");
+                Console.WriteLine("3. Wyświetl wszystkie oceny:\n");
+                Console.WriteLine("4. Zakończ program:\n");
+                string choose = Console.ReadLine();
+                switch(choose)
+                {
+                    case "1":
+                        int ocena = int.Parse(Console.ReadLine());
+                        uczen.dodajOcene(ocena);
+                        break;
+                    case "2":
+                        uczen.obliczSrednia();
+                        break;
+                    case "3":
+                        uczen.wypiszOceny();
+                        break;
+                    case "4":
+                        end = false;
+                        break;
+                }
+            }
+            
+
+            
+        }
+    }
+}
