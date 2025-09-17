@@ -1,1 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace dziedziczenie_hierarchiczne
+{
+    class Figura
+    {
+        private string _nazwa;
+
+        public string Nazwa { get => _nazwa; set => _nazwa = value; }
+
+        public double ObliczPole(double wartosc, string choose)
+        {
+            Console.WriteLine($"Pole {choose} wynosi {wartosc}");
+            return wartosc;
+        }
+    }
+    class Kwadrat : Figura
+    {
+        private int _bok;
+        public int Bok { get => _bok; set => _bok = value; }
+        
+    }
+    class Kolo : Figura
+    {
+        private int _promien;
+
+        public int Promien { get => _promien; set => _promien = value; }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Figura figura = new Figura();
+            Kwadrat kwadrat = new Kwadrat();
+            Kolo kolo = new Kolo();
+
+            Console.WriteLine("Wybierz wigure pole której chcesz obliczyć (kwadrat/koło)");
+            string choose = Console.ReadLine();
+            figura.Nazwa = choose; 
+            switch (choose)
+            {
+                case "kwadrat":
+                    Console.WriteLine("Podaj bok kwadratu");
+                    kwadrat.Bok = int.Parse(Console.ReadLine());
+                    if (kwadrat.Bok <= 0)
+                    {
+                        Console.WriteLine("Podaj poprawną wartość");
+                        return;
+                    }
+                    kwadrat.ObliczPole(Math.Pow(kwadrat.Bok,2), choose);
+                    break;
+                case "koło":
+                case "kolo":
+                    Console.WriteLine("Podaj promień koła");
+                    kolo.Promien = int.Parse(Console.ReadLine());
+                    if(kolo.Promien <= 0)
+                    {
+                        Console.WriteLine("Podaj poprawną wartość");
+                        return;
+                    }
+                    kolo.ObliczPole(Math.Pow(kolo.Promien, 2)*(Math.PI), choose);
+                    break;
+                default:
+                    Console.WriteLine("Nieznana figura!");
+                    break;
+            }
+        }
+    }
+}
 
