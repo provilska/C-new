@@ -1,0 +1,89 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace dziedziczenie_wielopoziomowe
+{
+    public enum Stanowiska
+    {
+        programista,
+        developer
+    }
+    public enum Jenzyki
+    {
+        JavaScript,
+        Python
+    }
+    class Osoba
+    {
+        private string _name;
+        private string _surname;
+
+        public string Name { get => _name; set => _name = value; }
+        public string Surname { get => _surname; set => _surname = value; }
+
+        public void PrzedstawSie()
+        {
+            Console.WriteLine($"Nazywam się {Name} {Surname}");
+        }
+    }
+    class Pracownik : Osoba
+    {
+        private  Stanowiska _stanowisko;
+
+        public Stanowiska Stanowisko { get => _stanowisko; set => _stanowisko = value; }
+
+
+        public int Pracuj(int godziny)
+        {
+            if (godziny > 8)
+            {
+                Console.WriteLine("Jestem zmęczony...");
+            }
+            else
+            {
+                Console.WriteLine("Pracuje");
+            }
+            return godziny;
+        }
+    }
+    class Programista : Pracownik
+    {
+        private Jenzyki _jenzykiProgramowania;
+
+        public Jenzyki JenzykiProgramowania { get => _jenzykiProgramowania; set => _jenzykiProgramowania = value; }
+        public int Koduj(int linie)
+        {
+            if (linie > 100)
+            {
+                Console.WriteLine("Dużo kodu!");
+            }
+            else
+            {
+                Console.WriteLine("Koduje spokojnie");
+            }
+            return linie;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Programista sofia = new Programista();
+            Console.WriteLine("Podaj swoje imię:\n");
+            sofia.Name = Console.ReadLine();
+            Console.WriteLine("Podaj swoje nazwisko:\n");
+            sofia.Surname = Console.ReadLine();
+            sofia.PrzedstawSie();
+
+            Console.WriteLine("Podaj swoje stanowisko: 1 - programista, 2 - developer:\n");
+            int stanowisko = int.Parse(Console.ReadLine());
+
+            sofia.Stanowisko = (Stanowiska)(stanowisko - 1);
+
+            Console.WriteLine($"Wybrałeś stanowisko: {sofia.Stanowisko}");
+        }
+    }
+}
