@@ -1,0 +1,74 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace dziedziczenie1
+{
+    class Pojazd
+    {
+        private string _marka;
+        private string _model;
+        private int _rokProdukcji;
+
+        public string Marka { get => _marka; set => _marka = value; }
+        public string Model { get => _model; set => _model = value; }
+        public int RokProdukcji { get => _rokProdukcji; set => _rokProdukcji = value; }
+        public void Info()
+        {
+            Console.WriteLine($"Podstawowa informacja o pojedzie\nMarka: {Marka}\nModel: {Model}\nRokProdukcji: {RokProdukcji}");
+        }
+    }
+    class Car : Pojazd
+    {
+        private int _liczbaDrzwi;
+        public int LiczbaDrzwi { get => _liczbaDrzwi; set =>  _liczbaDrzwi = value;}
+        public void InfoSamochodu()
+        {
+            base.Info(); 
+            Console.WriteLine($"Liczba drzwi: {LiczbaDrzwi}");
+        }
+    } 
+    class Motocykl : Pojazd
+    {
+        private bool _czySportowy;
+
+        public bool CzySportowy {  get => _czySportowy; set =>  _czySportowy = value;}
+        public void InfoMotocykla()
+        {
+            //base.Info();
+            Console.WriteLine($"Czy sportowy: {(CzySportowy ? "Tak" : "false")}");
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Car car = new Car();
+
+            Motocykl motocykl = new Motocykl();
+
+            //Console.WriteLine("Wpisz markę samochodu\n");
+            //car.Marka = Console.ReadLine();
+
+            //Console.WriteLine("Wpisz model samochodu\n");
+            //car.Model = Console.ReadLine();
+
+            //Console.WriteLine("Wpisz rok produkcji samochodu\n");
+            //car.RokProdukcji = int.Parse(Console.ReadLine());
+
+            //car.Info();
+
+            //Console.WriteLine("Wpisz liczbę drzwi samochodu\n");
+            //car.LiczbaDrzwi = int.Parse(Console.ReadLine());
+
+            //car.InfoSamochodu();
+
+            Console.WriteLine("Czy motocykl jest sportowy? True/False");
+            motocykl.CzySportowy = bool.Parse(Console.ReadLine());
+
+            motocykl.InfoMotocykla();
+        }
+    }
+}
