@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace dziedziczenie_pojedyncze
+{
+    class Pojazd
+    {
+        private string _marka;
+        private int _predkosc;
+
+        public string Marka { get => _marka; set => _marka = value; }
+
+        public int Predkosc { get => _predkosc; set => _predkosc = value; }
+
+        public virtual int Jedz(int km)
+        {
+            if (km == 0) return 0;
+            return km;
+        }
+    }
+    class Samochod : Pojazd
+    {
+        private int _paliwo;
+
+        public  int Paliwo { get => _paliwo; set => _paliwo = value; }
+        public int Tankuj(int litry)
+        {
+            if(litry <= 0) return 0;
+            return _paliwo += litry;
+        }
+        public override int Jedz(int dystans)
+        {
+            int spalanie = dystans / 10;
+            if (spalanie > _paliwo)
+            {
+                Console.WriteLine("Zatankuj samochód!");
+                return 0;
+            }
+            _paliwo -= spalanie;
+            Console.WriteLine($"Przejechałeś {dystans} km.Zużyto {spalanie} paliwa.Zostało {_paliwo} paliwa");
+            return base.Jedz(dystans);
+
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Samochod lada = new Samochod();
+
+            Console.WriteLine("Wpisz prędkość samochodu");
+            lada.Predkosc = int.Parse(Console.ReadLine());
+            Console.WriteLine($"Prędkość wynosi {lada.Predkosc} na godzine");
+
+            Console.WriteLine("Zatankuj samochód");
+            int litry = int.Parse(Console.ReadLine());
+            lada.Tankuj(litry);
+
+            Console.Write("Podaj dystans do przejechania (km): ");
+            int dystans = int.Parse(Console.ReadLine());
+
+            lada.Jedz(dystans);
+        }
+    }
+}
