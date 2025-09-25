@@ -1,0 +1,52 @@
+using System;
+using System.Reflection;
+
+class UrzadzenieElektroniczne
+{
+    public string Producent {  get; set; }
+    public string Model { get; set; }
+    public UrzadzenieElektroniczne(string producent, string model)
+    {
+        Producent = producent;
+        Model = model;
+    }
+    //konstruktor kopiujący
+    public UrzadzenieElektroniczne(UrzadzenieElektroniczne inne)
+    {
+        Producent = inne.Producent;
+        Model = inne.Model;
+    }
+    public void WyswietlInformacje()
+    {
+        Console.WriteLine($"Producent: {Producent}\nModel: {Model}");
+    }
+}
+class Laptop : UrzadzenieElektroniczne
+{
+    public double RozmiarEkranu { get; set; }
+    public Laptop(double rozmiarEkranu) : base("apple","m3")
+    {
+        RozmiarEkranu = rozmiarEkranu;
+    }
+    //konstruktor kopiujący
+    public Laptop(Laptop inne) : base(inne)
+    {
+        RozmiarEkranu = inne.RozmiarEkranu;
+    }
+    public new void WyswietlInformacje()
+    {
+        Console.WriteLine($"Producent: {Producent}\nModel: {Model}\nRozmier ekranu: {RozmiarEkranu}");
+    }
+}
+class Program
+{
+    static void Main()
+    {
+        Laptop laptop = new Laptop(30.5);
+        laptop.WyswietlInformacje();
+
+        //kopia
+        Laptop laptop1 = new Laptop(laptop);
+        laptop1.WyswietlInformacje();
+    }
+}
