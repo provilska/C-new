@@ -1,0 +1,81 @@
+using System;
+
+class Osoba
+{
+    public string Imie { get; set; }
+    public string Nazwisko { get; set; }
+
+    // Konstruktor normalny
+    public Osoba(string imie, string nazwisko)
+    {
+        Imie = imie;
+        Nazwisko = nazwisko;
+    }
+
+    // Konstruktor kopiujący
+    public Osoba(Osoba inna)
+    {
+        Imie = inna.Imie;
+        Nazwisko = inna.Nazwisko;
+    }
+
+    public void Wyswietl()
+    {
+        Console.WriteLine($"Imię: {Imie}, Nazwisko: {Nazwisko}");
+    }
+}
+
+class Pracownik : Osoba
+{
+    public string Stanowisko { get; set; }
+
+    // Konstruktor normalny
+    public Pracownik(string imie, string nazwisko, string stanowisko)
+        : base(imie, nazwisko)
+    {
+        Stanowisko = stanowisko;
+    }
+
+    // Konstruktor kopiujący
+    public Pracownik(Pracownik inny)
+        : base(inny) // wywołuje konstruktor kopiujący Osoba
+    {
+        Stanowisko = inny.Stanowisko;
+    }
+
+    public new void Wyswietl()
+    {
+        Console.WriteLine($"Imię: {Imie}, Nazwisko: {Nazwisko}, Stanowisko: {Stanowisko}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Tworzymy obiekt za pomocą normalnego konstruktora
+        Pracownik p1 = new Pracownik("Jan", "Kowalski", "Programista");
+
+        // Tworzymy kopię za pomocą konstruktora kopiującego
+        Pracownik p2 = new Pracownik(p1);
+
+        // Wyświetlamy obydwa obiekty
+        Console.WriteLine("Pracownik 1:");
+        p1.Wyswietl();
+
+        Console.WriteLine("Pracownik 2 (kopia):");
+        p2.Wyswietl();
+
+        // Zmieniamy coś w kopii, aby pokazać że to niezależny obiekt
+        p2.Imie = "Adam";
+        p2.Stanowisko = "Kierownik";
+
+        Console.WriteLine("\nPo zmianach w kopii:");
+        Console.WriteLine("Pracownik 1:");
+        p1.Wyswietl();
+        Console.WriteLine("Pracownik 2:");
+        p2.Wyswietl();
+
+        Console.ReadKey();
+    }
+}
