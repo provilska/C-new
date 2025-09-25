@@ -1,0 +1,35 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Zadanie_z_konstruktorem
+{
+    class Produkt
+    {
+        public string Nazwa {  get; set; }
+        public int Cena { get; set; }
+        public Produkt(string nazwa, int cena)
+        {
+            Nazwa = nazwa;
+            Cena = cena;
+        }
+    }
+    class Napoj : Produkt
+    {
+        public int Objetnosc { get; set; }
+        public Napoj(int objetnosc) : base("mohito", 17)
+        {
+            Objetnosc = objetnosc;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Napoj nap = new Napoj(250);
+            Console.WriteLine($"{nap.Nazwa} kosztuje {nap.Cena} i ma {nap.Objetnosc} ml");
+        }
+    }
+}
