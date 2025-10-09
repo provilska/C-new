@@ -2,3 +2,57 @@ Utwórz klasę abstrakcyjną Shape z metodą GetArea().
 Zaimplementuj klasy Circle i Rectangle.
 Utwórz listę Shape i policz pola różnych figur.
 
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp3
+{
+    abstract class Shape
+    {
+        public abstract double GetArea();
+    }
+    class Circle : Shape
+    {
+        public double Radius { get; set; }
+        public Circle(double r)
+        {
+            Radius = r;
+        }
+        public override double GetArea()
+        {
+            return Math.PI * Radius * Radius;
+        }
+    }
+    class Rectangle : Shape
+    {
+        public double BokA {  get; set; }
+        public double BokB { get; set; }
+        public Rectangle(double a, double b)
+        {
+            BokA = a;
+            BokB = b;
+        }
+        public override double GetArea()
+        {
+            return BokA * BokB;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Shape kolo = new Circle(5);
+
+            Shape prostokat = new Rectangle(5, 7);
+
+            List<Shape> table = new List<Shape>();
+            table.Add(kolo);
+            table.Add(prostokat);
+
+            foreach (Shape shape in table)
+            {
+                Console.WriteLine($"Pole: {shape.GetArea()}");
+            }
+        }
+    }
+}
