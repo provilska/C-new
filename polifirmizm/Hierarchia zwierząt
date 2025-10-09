@@ -1,0 +1,40 @@
+using System;
+
+namespace ConsoleApp3
+{
+    class Animal
+    {
+        public virtual void Speak()
+        {
+            Console.WriteLine("Zwierze wydje dzwięki");
+        }
+    }
+    class Dog : Animal
+    {
+        public override void Speak()
+        {
+            Console.WriteLine("Woof, woof");
+        }
+    }
+    class Cat : Animal
+    {
+        public override void Speak()
+        {
+            Console.WriteLine("Meow, meow");
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Animal zwierze = new Animal();
+            zwierze.Speak();
+
+            Animal pies = new Dog();
+            pies.Speak();
+
+            Animal kot = new Cat();
+            kot.Speak();
+        }
+    }
+}
