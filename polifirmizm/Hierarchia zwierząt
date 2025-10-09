@@ -1,3 +1,6 @@
+Stwórz klasę Animal z metodą Speak() oznaczoną jako virtual.
+Utwórz klasy Dog i Cat, które nadpiszą tę metodę.
+W Main przypisz różne zwierzęta do tablicy Animal[] i wywołaj Speak().
 using System;
 
 namespace ConsoleApp3
