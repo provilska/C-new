@@ -1,1 +1,4 @@
+Utwórz klasę abstrakcyjną Shape z metodą GetArea().
+Zaimplementuj klasy Circle i Rectangle.
+Utwórz listę Shape i policz pola różnych figur.
 
