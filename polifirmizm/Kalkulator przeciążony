@@ -1,0 +1,41 @@
+Utwórz klasę Calculator i zaimplementuj metodę Add w trzech wersjach:
+
+dodającą dwa int,
+
+dodającą dwa double,
+
+dodającą trzy int.
+Przetestuj działanie.
+
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp3
+{
+    class Calculator
+    {
+        public void Add(int a, int b)
+        {
+            Console.WriteLine($"Wywoływanie metody z dwoma int {a}, {b}");
+        }
+        public void Add(double a, double b)
+        {
+            Console.WriteLine($"Wywoływanie metody z dwoma double {a}, {b}");
+        }
+        public void Add(int a, int b, int c)
+        {
+            Console.WriteLine($"Wywoływanie metody z trzema int {a}, {b}, {c}");
+        }
+
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Calculator test = new Calculator();
+            test.Add(1, 6);
+            test.Add(5.3, 7.5);
+            test.Add(9, 2, 8);
+        }
+    }
+}
