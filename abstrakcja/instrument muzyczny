@@ -1,0 +1,46 @@
+namespace abstractclass
+{
+    abstract class InstrumentMuzyczny
+    {
+        public abstract void ZagrajDzwiek();
+        public abstract void Nastroj();
+    }
+    class Gitara : InstrumentMuzyczny
+    {
+        public override void ZagrajDzwiek()
+        {
+            Console.WriteLine("Melodia na gitarze");
+        }
+        public override void Nastroj()
+        {
+            Console.WriteLine("Natrój gitarę żeby móc grać");
+        }
+    }
+    class Fortepian : InstrumentMuzyczny
+    {
+        public override void ZagrajDzwiek()
+        {
+            Console.WriteLine("Melodia na fortepianie");
+        }
+        public override void Nastroj()
+        {
+            Console.WriteLine("Natrój fortepian żeby móc grać");
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<InstrumentMuzyczny> instrumenty = new List<InstrumentMuzyczny>
+            {
+                new Gitara(),
+                new Fortepian()
+            };
+            foreach(var instrument in instrumenty)
+            {
+                instrument.ZagrajDzwiek();
+                instrument.Nastroj();
+            }
+        }
+    }
+}
