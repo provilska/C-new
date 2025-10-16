@@ -1,1 +1,52 @@
+using System;
 
+namespace abstractclass
+{
+    
+    abstract class Pracownik
+    {
+        public string Name { get; set; }
+        public string Position { get; set; }
+        public abstract void CalculateSalary();
+    }
+    class Programista : Pracownik
+    {
+        public int HourlyRate {  get; set; }
+        public int Hours { get; set; }
+        public Programista(int hourlyRate, int hours, string position)
+        {
+            HourlyRate = hourlyRate;
+            Hours = hours;
+            Position = position;
+        }
+        public override void CalculateSalary()
+        {
+            Console.WriteLine($"Stanowisko: {Position} Pensja: {HourlyRate * Hours}");
+        }
+    }
+    class Manager : Pracownik
+    {
+        int salary = 6000;
+        public int Bonus { get; set; }
+        public Manager(int bonus, string position)
+        {
+            Bonus = bonus;
+            Position = position;
+        }
+        public override void CalculateSalary()
+        {
+            Console.WriteLine($"Stanowisko: {Position} Pensja: {salary + Bonus}");
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Programista programista = new Programista(52, 80, "Programista");
+            programista.CalculateSalary();
+
+            Manager manager = new Manager(600, "Manager");
+            manager.CalculateSalary() ;
+        }
+    }
+}
