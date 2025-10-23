@@ -7,3 +7,69 @@ Cel: utrwalenie klas abstrakcyjnych, dziedziczenia i polimorfizmu.
 4. W metodzie Main utwórz listę List<Figura> i dodaj kilka różnych figur.
 5. Za pomocą pętli wyświetl pola i obwody wszystkich figur (polimorfizm w akcji).
 Rozszerzenie: Dodaj metodę Opis() oraz przesłoń ToString().
+
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp4
+{
+    abstract class Figura
+    {
+        public abstract double Pole();
+        public abstract double Obwod();
+    }
+    class Kolo : Figura
+    {
+        public double R { get; set; }
+        public Kolo(double r)
+        {
+            R = r;
+        }
+        public override double Pole()
+        {
+            return Math.PI * R * R; 
+        }
+        public override double Obwod()
+        {
+            return 2 * Math.PI * R;
+        }
+    }
+
+    class Prostokat : Figura
+    {
+        public double BokA { get; set; }
+        public double BokB { get; set; }
+        public Prostokat(double a, double b)
+        {
+            BokA = a;
+            BokB = b;
+        }
+        public override double Pole()
+        {
+            return BokA * BokB;
+        }
+        public override double Obwod()
+        {
+            return 2 * (BokA + BokB);
+        }
+    }
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Figura> lista = new List<Figura>
+            {
+                new Kolo(7),
+                new Prostokat(5,7)
+            };
+
+            foreach (var figura in lista)
+            {
+                Console.WriteLine($"Pole: {figura.Pole():F2}");
+                Console.WriteLine($"Obwód: {figura.Obwod():F2}");
+                Console.WriteLine();
+            }
+        }
+    }
+}
