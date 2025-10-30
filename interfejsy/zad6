@@ -3,3 +3,39 @@ Temat: Interfejs w roli kontraktu
 Utwórz interfejs ILoginService z metodami bool Zaloguj(string login, string haslo) i void Wyloguj().
 Zaimplementuj dwie klasy: LoginUcznia i LoginNauczyciela.
 Zadbaj, aby obie klasy działały zgodnie z interfejsem, ale różniły się treścią komunikatów.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp3
+{
+    interface ILoginService
+    {
+        bool Zaloguj(string login, string haslo);
+        void Wyloguj();
+    }
+    class LoginUcznia : ILoginService
+    {
+        bool Zaloguj(string login, string haslo)
+        {
+            if((string.IsNullOrEmpty(login)) && (string.IsNullOrEmpty(haslo)){
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+           
+
+        }
+    }
+}
