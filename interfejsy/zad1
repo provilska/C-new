@@ -1,0 +1,48 @@
+namespace ConsoleApp3
+{
+    interface IWlaczanie
+    {
+        void Wlacz();
+        void Wylacz();
+    }
+    class Telewizor : IWlaczanie
+    {
+        public void Wlacz()
+        {
+            Console.WriteLine("Włanczam telewizor");
+        }
+        public void Wylacz()
+        {
+            Console.WriteLine("Wyłanczam telewizor");
+        }
+    }
+    class Lampa : IWlaczanie
+    {
+        public void Wlacz()
+        {
+            Console.WriteLine("Włanczam lampę");
+        }
+        public void Wylacz()
+        {
+            Console.WriteLine("Wyłanczam lampę");
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            List<IWlaczanie> list = new List<IWlaczanie>
+            {
+                new Telewizor(),
+                new Lampa()
+            };
+            foreach(var u in list)
+            {
+                u.Wlacz();
+                u.Wylacz();
+            }
+
+
+        }
+    }
+}
