@@ -1,0 +1,5 @@
+Zadanie 6 (dla chętnych).
+Temat: Interfejs w roli kontraktu
+Utwórz interfejs ILoginService z metodami bool Zaloguj(string login, string haslo) i void Wyloguj().
+Zaimplementuj dwie klasy: LoginUcznia i LoginNauczyciela.
+Zadbaj, aby obie klasy działały zgodnie z interfejsem, ale różniły się treścią komunikatów.
