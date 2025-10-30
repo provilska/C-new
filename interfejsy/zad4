@@ -1,0 +1,4 @@
+Temat: Wielointerfejsowość
+1.    Utwórz interfejsy ILatajace i IPlywajace z odpowiednimi metodami.
+2.    Utwórz klasę Kaczka, która implementuje oba interfejsy.
+3.    W Main sprawdź, jak zachowuje się obiekt klasy Kaczka wywoływany przez różne interfejsy.
