@@ -1,0 +1,40 @@
+Twoim zadaniem jest napisać klasę reprezentującą prosty obiekt z życia codziennego, np. Samochód, Uczeń, Produkt, KontoBankowe lub Zwierzę.
+
+Twoja klasa powinna:
+
+1. Zawierać pola prywatne (np. marka, prędkość, saldo, imię).
+2. Udostępniać te dane za pomocą publicznych właściwości (get/set) z odpowiednią walidacją.
+3. Posiadać kilka metod publicznych, które wykonują działania na obiekcie (np. `Przyspiesz()`, `Wplata()`, `WypiszDane()`).
+4. Wykorzystywać różne modyfikatory dostępu (`private`, `public`, `protected`, `internal`).
+5. Zawierać co najmniej jedną metodę przeciążoną (z tą samą nazwą, ale innymi parametrami).
+
+---
+
+Przykład inspiracyjny:
+
+class KontoBankowe
+{
+    private double saldo;
+    public string Wlasciciel { get; private set; }
+
+    public KontoBankowe(string wlasciciel)
+    {
+        Wlasciciel = wlasciciel;
+        saldo = 0;
+    }
+
+    public void Wplata(double kwota) => saldo += kwota;
+
+    public void Wyplata(double kwota)
+    {
+        if (kwota <= saldo)
+            saldo -= kwota;
+        else
+            Console.WriteLine("Brak środków!");
+    }
+
+    public void PokazStan() => Console.WriteLine($"Saldo: {saldo} zł");
+}
+
+
+Pamiętaj: dobrze zaprojektowana klasa ukrywa dane (enkapsulacja) i udostępnia tylko to, co niezbędne.
