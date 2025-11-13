@@ -57,7 +57,7 @@ namespace zoo
         }
     }
 
-    public class Program
+    internal class Program
     {
         public static void SymulacjaDnia(List<Zwierze> zwierzeta)
         {
