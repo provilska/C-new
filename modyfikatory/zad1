@@ -1,1 +1,9 @@
-
+Zadanie 2 — „Zwierzęta w zoo”
+Utwórz abstrakcyjną klasę `Zwierze` z właściwościami: `public string Nazwa { get; protected set; }` `public int Wiek { get; protected set; }` oraz metodami abstrakcyjnymi: `void WydajDzwiek()` i `void Jedz()`
+Zaimplementuj klasy:
+`Lew`,
+`Slon`,
+`Papuga`.
+Każda z nich ma inne zachowanie metod.
+Napisz metodę `SymulacjaDnia()` w klasie `Program`, która dla listy zwierząt wywołuje ich metody w losowej kolejności.
+Użyj klasy `Random` i prostego algorytmu losowania.
