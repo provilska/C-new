@@ -7,3 +7,28 @@ Zaimplementuj klasy:
 `Stazysta` – pensja = połowa podstawy.
 Użyj listy `List<Pracownik>` i algorytmu wyszukiwania najwyższej pensji.
 Wyświetl najlepiej zarabiającego pracownika.
+
+namespace ConsoleApp4
+{
+    public enum Stanowiska
+    {
+        Programista,
+        Kierownik,
+        Starzysta
+    }
+    abstract class Pracownik
+    {
+        public string Imie {  get; private set; }
+        public Stanowiska Stanowiska { get; private set; }
+        public int StazPracy { get; private set; }
+        public int PensjaPodstawowa { get; private set; }
+
+        public abstract double ObliczPensje();
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+        }
+    }
+}
