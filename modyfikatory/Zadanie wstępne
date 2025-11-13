@@ -38,3 +38,46 @@ class KontoBankowe
 
 
 Pamiętaj: dobrze zaprojektowana klasa ukrywa dane (enkapsulacja) i udostępnia tylko to, co niezbędne.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp3
+{
+    class Produkt
+    {
+        public string Nazwa {  get; private set; }
+        private int _ilosc;
+        public int Ilosc {  get { return _ilosc; } set { _ilosc = value; } }
+
+        public Produkt(string nazwa, int ilosc)
+        {
+            Nazwa = nazwa;
+            Ilosc = ilosc;
+        }
+        public void WypiszDane()
+        {
+            if (Ilosc > 0)
+            {
+            Console.WriteLine($"Produkt: {Nazwa}, Ilość na magazynie: {Ilosc}");
+            }
+            else
+            {
+            Console.WriteLine($"Produktu '{Nazwa}' nie ma na magazynie");
+
+            }
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Produkt produkt = new Produkt("Rower", 0);
+            produkt.WypiszDane();
+        }
+    }
+}
+
