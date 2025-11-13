@@ -7,3 +7,91 @@ Zaimplementuj klasy:
 Każda z nich ma inne zachowanie metod.
 Napisz metodę `SymulacjaDnia()` w klasie `Program`, która dla listy zwierząt wywołuje ich metody w losowej kolejności.
 Użyj klasy `Random` i prostego algorytmu losowania.
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace zoo
+{
+    abstract class Zwierze
+    {
+        public string Nazwa { get; protected set; }
+        public int Wiek { get; protected set; }
+        public abstract void WydajDzwiek();
+        public abstract void Jedz();
+
+    }
+    class Lew : Zwierze
+    {
+        public Lew(string nazwa, int wiek)
+        {
+            Nazwa = nazwa;
+            Wiek = wiek;
+        }
+        public override void WydajDzwiek()
+        {
+            Console.WriteLine("Lew wydaje dzwięk");
+        }
+        public override void Jedz()
+        {
+            Console.WriteLine("Lew je");
+        }
+    }
+    class Slon : Zwierze
+    {
+        public Slon(string nazwa, int wiek)
+        {
+            Nazwa = nazwa;
+            Wiek = wiek;
+        }
+        public override void WydajDzwiek()
+        {
+            Console.WriteLine("Słoń wydaje dzwięk");
+        }
+        public override void Jedz()
+        {
+            Console.WriteLine("Słoń je");
+        }
+    }
+
+    public class Program
+    {
+        public static void SymulacjaDnia(List<Zwierze> zwierzeta)
+        {
+            Random rand = new Random();
+
+            List<Zwierze> randzwierze = new List<Zwierze>(zwierzeta);
+
+            while (randzwierze.Count > 0)
+            {
+                int index = rand.Next(randzwierze.Count);
+                Zwierze zwierze = randzwierze[index];
+
+                if (rand.Next(2) == 0)
+                {
+                    zwierze.WydajDzwiek();
+                }
+                else
+                {
+                    zwierze.Jedz();
+                }
+
+                randzwierze.RemoveAt(index);
+            }
+        }
+
+        public static void Main(string[] args)
+        {
+            List<Zwierze> zwierzeta = new List<Zwierze>()
+            {
+                new Lew("Lew", 5),
+                new Slon("Słoń", 10),
+            };
+            SymulacjaDnia(zwierzeta);
+        }
+
+    }
+}
