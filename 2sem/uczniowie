@@ -1,0 +1,22 @@
+Utwórz klasę:
+class Uczen
+{
+    public string Imie { get; set; }
+    public double Srednia { get; set; }
+
+    public Uczen(string imie, double srednia)
+    {
+        Imie = imie;
+        Srednia = srednia;
+    }
+}
+W programie głównym:
+Utwórz tablicę 5 uczniów.
+Wykonaj algorytmy:
+
+1.  Wyszukaj ucznia o podanym imieniu (wyszukiwanie liniowe).
+2.  Znajdź ucznia z najwyższą średnią.
+3.  Znajdź ucznia z najniższą średnią.
+4.  Oblicz średnią ocen całej klasy.
+5.  Posortuj uczniów rosnąco według średniej (np. sortowanie bąbelkowe).
+
