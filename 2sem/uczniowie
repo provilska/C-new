@@ -20,3 +20,61 @@ Wykonaj algorytmy:
 4.  Oblicz średnią ocen całej klasy.
 5.  Posortuj uczniów rosnąco według średniej (np. sortowanie bąbelkowe).
 
+namespace ConsoleApp2
+{
+    class Uczen
+    {
+        public string Imie { get; set; }
+        public double Srednia { get; set; }
+
+        public Uczen(string imie, double srednia)
+        {
+            Imie = imie;
+            Srednia = srednia;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Uczen[] uczniowie = new Uczen[5]
+            {
+                new Uczen ("Sofia", 2.6),
+                new Uczen ("Maksym", 3.0),
+                new Uczen ("Michał", 4.8),
+                new Uczen ("Lena", 3.2),
+                new Uczen ("David", 5.0)
+            };
+            Console.WriteLine("Podaj szukane imię: \n");
+            string szukane = Console.ReadLine();
+
+            string wynik = WyszukiwaniePoImieniu(szukane);
+            
+
+            Console.WriteLine("Szukam ucznia z najwyższą średnią....");
+            Uczen maxSrednia = uczniowie [0];
+            for(int i = 0;i < uczniowie.Length; i++)
+            {
+                if (uczniowie[i].Srednia > maxSrednia.Srednia)
+                {
+                    maxSrednia.Srednia = uczniowie[i].Srednia;
+                }
+                
+            }
+                Console.WriteLine($"Uczeń z najwyższą średnią to {maxSrednia.Imie}, Srednia wynosi {maxSrednia.Srednia}");
+            
+        }
+
+        private static string WyszukiwaniePoImieniu(string szukane, uczniowie)
+        {
+            for (int i = 0; i < uczniowie.Length; i++)
+            {
+                if (uczniowie[i].Imie == szukane)
+                {
+                    return Console.WriteLine($"Znaleziono {szukane}\nDane ucznia: Imię: {uczniowie[i].Imie}, Srednia: {uczniowie[i].Srednia}");
+                }
+            }
+        }
+    }
+}
