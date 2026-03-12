@@ -20,7 +20,7 @@ Wykonaj algorytmy:
 4.  Oblicz średnią ocen całej klasy.
 5.  Posortuj uczniów rosnąco według średniej (np. sortowanie bąbelkowe).
 
-namespace ConsoleApp2
+namespace Uczen
 {
     class Uczen
     {
@@ -49,30 +49,32 @@ namespace ConsoleApp2
             Console.WriteLine("Podaj szukane imię: \n");
             string szukane = Console.ReadLine();
 
-            string wynik = WyszukiwaniePoImieniu(szukane);
-            
+            WyszukiwaniePoImieniu(szukane, uczniowie);
+
 
             Console.WriteLine("Szukam ucznia z najwyższą średnią....");
-            Uczen maxSrednia = uczniowie [0];
-            for(int i = 0;i < uczniowie.Length; i++)
+            Uczen najlepszyUczen = uczniowie[0]; 
+
+            for (int i = 1; i < uczniowie.Length; i++)
             {
-                if (uczniowie[i].Srednia > maxSrednia.Srednia)
+                if (uczniowie[i].Srednia > najlepszyUczen.Srednia)
                 {
-                    maxSrednia.Srednia = uczniowie[i].Srednia;
+                    najlepszyUczen = uczniowie[i]; 
                 }
-                
             }
-                Console.WriteLine($"Uczeń z najwyższą średnią to {maxSrednia.Imie}, Srednia wynosi {maxSrednia.Srednia}");
+
+            Console.WriteLine($"Uczeń z najwyższą średnią to {najlepszyUczen.Imie}, Srednia wynosi {najlepszyUczen.Srednia}");
             
+
         }
 
-        private static string WyszukiwaniePoImieniu(string szukane, uczniowie)
+        public static void WyszukiwaniePoImieniu(string szukane, Uczen[] uczniowie)
         {
             for (int i = 0; i < uczniowie.Length; i++)
             {
                 if (uczniowie[i].Imie == szukane)
                 {
-                    return Console.WriteLine($"Znaleziono {szukane}\nDane ucznia: Imię: {uczniowie[i].Imie}, Srednia: {uczniowie[i].Srednia}");
+                    Console.WriteLine($"Znaleziono {szukane}\nDane ucznia: Imię: {uczniowie[i].Imie}, Srednia: {uczniowie[i].Srednia}");
                 }
             }
         }
