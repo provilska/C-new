@@ -45,6 +45,10 @@ for(int i = 0; i < produkty.Length - 1; i++)
         }
     }
 }
+foreach(Produkt p in produkty)
+{
+    Console.WriteLine(p.Nazwa + " " + p.Cena);
+}
 
 //sortowanie przez wybór
 for(int i = 0; i < produkty.Length - 1; i++)
