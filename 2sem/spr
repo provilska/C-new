@@ -45,3 +45,34 @@ for(int i = 0; i < produkty.Length - 1; i++)
         }
     }
 }
+
+//sortowanie przez wybór
+for(int i = 0; i < produkty.Length - 1; i++)
+{
+    int minIndex = i;
+
+    for(int j = i + 1; j < produkty.Length; j++)
+    {
+        if(produkty[j].Nazwa.CompareTo(produkty[minIndex].Nazwa) < 0)
+            minIndex = j;
+    }
+
+    Produkt temp = produkty[i];
+    produkty[i] = produkty[minIndex];
+    produkty[minIndex] = temp;
+}
+
+//sortowanie przez wstawianie
+for(int i = 1; i < produkty.Length; i++)
+{
+    Produkt key = produkty[i];
+    int j = i - 1;
+
+    while(j >= 0 && produkty[j].Nazwa.CompareTo(key.Nazwa) > 0)
+    {
+        produkty[j + 1] = produkty[j];
+        j--;
+    }
+
+    produkty[j + 1] = key;
+}
