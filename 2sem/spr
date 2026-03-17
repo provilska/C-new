@@ -16,3 +16,18 @@ public static void WyszukiwaniePoImieniu(string szukane, Uczen[] uczniowie)
 }
 
 //wyszukiwanie binarne
+
+
+//sortowanie bąbelkowe
+for(int i = 0; i < uczniowie.Length - 1; i++)
+{
+    for(int j = 0; j < uczniowie.Length - 1 - i; j++)
+    {
+        if(uczniowie[j].Srednia > uczniowie[j+1].Srednia)
+        {
+            Uczen temp = uczniowie[j];
+            uczniowie[j] = uczniowie[j+1];
+            uczniowie[j+1] = temp;
+        }
+    }
+}
