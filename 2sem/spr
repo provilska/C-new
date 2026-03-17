@@ -42,6 +42,27 @@ private static int WyszujakBinarnie(Produkt[] produkty, string szukane)
     }
     return -1;
 }
+//
+private static int WyszujakBinarnie(Produkt[] produkty, string szukane)
+{
+    int lewy = 0;
+    int prawy = produkty.Length-1;
+    while (lewy <= prawy)
+    {
+        int mid= (lewy+prawy)/2;
+        int wynik = produkty[mid].Nazwa.CompareTo(szukane);
+
+        if(wynik==0)
+        {
+            Console.WriteLine($"Znaleziono {produkty[mid].Nazwa} na indeksie {mid}");
+        }
+        if (wynik > 0)
+            prawy = mid - 1;
+        else
+            lewy = mid + 1;
+    }
+    return -1;
+}
 
 //sortowanie bąbelkowe
 for(int i = 0; i < uczniowie.Length - 1; i++)
