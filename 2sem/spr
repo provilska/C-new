@@ -1,1 +1,18 @@
+//wyszukiwanie liniowe
+Console.WriteLine("Podaj szukane imię: \n");
+string szukane = Console.ReadLine();
 
+WyszukiwaniePoImieniu(szukane, uczniowie);
+
+public static void WyszukiwaniePoImieniu(string szukane, Uczen[] uczniowie)
+{
+    for (int i = 0; i < uczniowie.Length; i++)
+    {
+        if (uczniowie[i].Imie == szukane)
+        {
+            Console.WriteLine($"Znaleziono {szukane}\nDane ucznia: Imię: {uczniowie[i].Imie}, Srednia: {uczniowie[i].Srednia}");
+        }
+    }
+}
+
+//wyszukiwanie binarne
