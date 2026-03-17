@@ -16,7 +16,32 @@ public static void WyszukiwaniePoImieniu(string szukane, Uczen[] uczniowie)
 }
 
 //wyszukiwanie binarne
+Console.WriteLine("Wyszukaj...");
+string szukane = Console.ReadLine();
+int wynik = WyszujakBinarnie(produkty, szukane);
+Console.WriteLine($"Znaleziono {wynik}");
 
+//indeks
+private static int WyszujakBinarnie(Produkt[] produkty, string szukane)
+{
+    int lewy = 0;
+    int prawy = produkty.Length-1;
+    while (lewy <= prawy)
+    {
+        int mid= (lewy+prawy)/2;
+        int wynik = produkty[mid].Nazwa.CompareTo(szukane);
+
+        if(wynik==0)
+        {
+            return mid;
+        }
+        if (wynik > 0)
+            prawy = mid - 1;
+        else
+            lewy = mid + 1;
+    }
+    return -1;
+}
 
 //sortowanie bąbelkowe
 for(int i = 0; i < uczniowie.Length - 1; i++)
