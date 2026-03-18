@@ -292,4 +292,16 @@ foreach(var r in random)
     Console.WriteLine($"{r.Nazwa}: {r.Cena} zł");
 }
 //sortowanie
-
+//sortowanie
+for(int i = 0;i < random.Length - 1; i++)
+{
+    for(int j = 0; j < random.Length-1-i; j++)
+    {
+        if (random[j].Cena > random[j + 1].Cena)
+        {
+            var temp = random[j];
+            random[j] = random[j + 1];
+            random[j + 1] = temp;
+        }
+    }
+}
