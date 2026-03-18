@@ -227,7 +227,19 @@ internal class Program
         int binar = WyszukiwanieBinarne(tab, szukane);
         Console.WriteLine($"{szukane} ZNAJDUJE SIĘ NA INDEKSIE {binar}");
                    //binar
-        
+
+        //losowanie tablicy
+        int[] tab2 = new int[10];
+        Random rnd = new Random();
+        for (int i = 0; i < tab2.Length; i++)
+        {
+            tab2[i] = rnd.Next(1, 50);
+        }
+        foreach (var t in tab2)
+        {
+            Console.WriteLine(t.ToString());
+        }
+                
     }
 
     private static int WyszukiwanieBinarne(int[] tab, int szukane)
