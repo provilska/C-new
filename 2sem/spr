@@ -167,7 +167,7 @@ internal class Program
         }
         Console.WriteLine($"Największa liczba to {max}");
 
-        //sortowanie
+        //sortowanie bubble
         for (int i = 0;i<tab.Length-1; i++)
         {
             for (int j = 0; j < tab.Length-1-i; j++)
@@ -181,6 +181,26 @@ internal class Program
             }
         }
         foreach(var t in tab)
+        {
+            Console.WriteLine(t.ToString());
+        }
+
+        //selection sort
+        for(int i =0; i < tab.Length-1; i++)
+        {
+            int min = i;
+            for(int j = i+1; j < tab.Length; j++)
+            {
+                if(tab[j] < tab[min]){
+                    min = j;
+                }
+        
+            }
+            int temp = tab[i];
+            tab[i] = tab[min];
+            tab[min] = temp;
+        }
+        foreach (var t in tab)
         {
             Console.WriteLine(t.ToString());
         }
