@@ -126,3 +126,91 @@ for(int i = 1; i < produkty.Length; i++)
 
     produkty[j + 1] = key;
 }
+
+
+
+internal class Program
+{
+    static void Main(string[] args)
+    {
+        int[] tab = { 1, 3, 7, 2, 9, 6, 5, 7 };
+        Console.WriteLine("Podaj liczbę");
+        int szukane = int.Parse(Console.ReadLine());
+
+        int index = tab[0];
+
+        for (int i = 0; i < tab.Length; i++)
+        {
+            if (tab[i] == szukane)
+            {
+                index = i; break;
+            }
+        }
+        Console.WriteLine($"{szukane} ZNAJDUJE SIĘ NA INDEKSIE {index}");
+
+        Console.WriteLine("Podaj liczbę");
+        int ilerazy = int.Parse(Console.ReadLine());
+        int count = 0;
+        for (int i = 0;i < tab.Length; i++)
+        {
+            if(tab[i] == ilerazy) { count++; }
+        }
+        Console.WriteLine($"{ilerazy} występuje {count} razy");
+
+        int max = tab[0];
+        for(int i = 0; i<tab.Length; i++)
+        {
+            if (tab[i] > max)
+            {
+                max = tab[i];
+            }
+        }
+        Console.WriteLine($"Największa liczba to {max}");
+
+        //sortowanie
+        for (int i = 0;i<tab.Length-1; i++)
+        {
+            for (int j = 0; j < tab.Length-1-i; j++)
+            {
+                if (tab[j]>tab[j+1])
+                {
+                    int temp = tab[j];
+                    tab[j] = tab[j+1];
+                    tab[j+1] = temp;
+                }
+            }
+        }
+        foreach(var t in tab)
+        {
+            Console.WriteLine(t.ToString());
+        }
+
+        int binar = WyszukiwanieBinarne(tab, szukane);
+        Console.WriteLine($"{szukane} ZNAJDUJE SIĘ NA INDEKSIE {binar}");
+                   //binar
+        
+    }
+
+    private static int WyszukiwanieBinarne(int[] tab, int szukane)
+    {
+        int left = 0;
+        int right = tab.Length - 1;
+        while (left <= right)
+        {
+            int mid = (left + right) / 2;
+            if (tab[mid] == szukane)
+            {
+                return mid;
+            }
+            if (szukane > tab[mid])
+            {
+                left = mid + 1;
+            }
+            else
+            {
+                right = mid - 1;
+            }
+        }
+            return -1;
+    }
+}
