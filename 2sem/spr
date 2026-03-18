@@ -265,3 +265,31 @@ internal class Program
             return -1;
     }
 }
+
+
+Produkt[] produkty = new Produkt[10]
+{
+    new Produkt("masło", 7.5),
+    new Produkt ("chleb", 2.5),
+    new Produkt ("jajka", 12.5),
+    new Produkt("ryz", 3.0),
+    new Produkt("mąka", 5.2),
+    new Produkt("lego", 20.5),
+    new Produkt("jabłka", 25.5),
+    new Produkt("gruszka", 19.5),
+    new Produkt("mango", 9.5),
+    new Produkt("miod", 23.5)
+};
+Produkt[] random = new Produkt[5];
+Random rnd = new Random();
+for(int i = 0; i < random.Length; i++)
+{
+    int indeks = rnd.Next(produkty.Length);
+    random[i] = produkty[indeks];
+}
+foreach(var r in random)
+{
+    Console.WriteLine($"{r.Nazwa}: {r.Cena} zł");
+}
+//sortowanie
+
