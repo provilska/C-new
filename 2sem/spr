@@ -205,6 +205,25 @@ internal class Program
             Console.WriteLine(t.ToString());
         }
 
+        //insert sort
+        for (int i = 1;i <tab.Length; i++)
+        {
+            int key = tab[i];
+            int j = i - 1;
+            while(j>=0 && tab[j] > key)
+            {
+                tab[j+1]= tab[j];
+                j--;
+            }
+            tab[j+1] = key;
+        }
+        
+        
+        foreach (var t in tab)
+        {
+            Console.WriteLine(t.ToString());
+        }
+
         int binar = WyszukiwanieBinarne(tab, szukane);
         Console.WriteLine($"{szukane} ZNAJDUJE SIĘ NA INDEKSIE {binar}");
                    //binar
