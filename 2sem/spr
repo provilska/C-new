@@ -292,7 +292,26 @@ foreach(var r in random)
     Console.WriteLine($"{r.Nazwa}: {r.Cena} zł");
 }
 //sortowanie
-//sortowanie
+/sortowanie selection
+                for(int i = 0;i < random.Length - 1; i++)
+                {
+                    int min = i;
+                    for(int j = i+1; j < random.Length; j++)
+                    {
+                        if (random[j].Cena < random[min].Cena)
+                        {
+                            min = j;
+                        }
+                    }
+                    var temp = random[i];
+                    random[i] = random[min];
+                    random[min] = temp;
+                }
+                foreach (var r in random)
+                {
+                    Console.WriteLine($"{r.Nazwa}: {r.Cena} zł");
+                }
+//sortowanie bubble
 for(int i = 0;i < random.Length - 1; i++)
 {
     for(int j = 0; j < random.Length-1-i; j++)
