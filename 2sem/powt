@@ -1,1 +1,144 @@
+//1
+{
+    class Produkt
+    {
+        public string Nazwa { get; set; }
+        public decimal Cena { get; set; }
+
+        public Produkt(string nazwa, decimal cena)
+        {
+            Nazwa = nazwa;
+            Cena = cena;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Produkt[] produkts = new Produkt[7]
+            {
+                new Produkt("masło", 7),
+                new Produkt("chleb", 2),
+                new Produkt("jajka", 16),
+                new Produkt("mąka", 3),
+                new Produkt("cynamon", 4),
+                new Produkt("jabłka", 21),
+                new Produkt("cukier", 5)
+            };
+
+            foreach(var p in produkts)
+            {
+                Console.WriteLine($"{p.Nazwa} -> {p.Cena} zł");
+            }
+
+            SortujAlfabetycznie(produkts);
+            Console.WriteLine("Tablica po sortowaniu alfabetycznie:");
+            foreach (var p in produkts)
+            {
+                Console.WriteLine($"{p.Nazwa} -> {p.Cena} zł");
+            }
+
+            Console.WriteLine("Podaj szukany produkt");
+            string szukane = Console.ReadLine();
+            WyszukajLiniowo(produkts, szukane);
+            WyszukajBinarnie(produkts, szukane);
+            NajdrozszyProdukt(produkts, szukane);
+            NajtanszyProdukt(produkts,szukane);
+            SreniaProduktow(produkts, szukane);
+
+            
+        }
+
+        private static void SreniaProduktow(Produkt[] produkts, string szukane)
+        {
+            decimal suma = 0;
+            for (int i = 0; i < produkts.Length; i++)
+            {
+                suma += produkts[i].Cena;
+            }
+            decimal srednia = suma / produkts.Length;
+            Console.WriteLine($"Średnia cena produktów to {Math.Floor(srednia)} zł");
+        }
+
+        private static void NajtanszyProdukt(Produkt[] produkts, string szukane)
+        {
+            Produkt min = produkts[0];
+            for (int i = 0; i < produkts.Length; i++)
+            {
+                if (produkts[i].Cena < min.Cena)
+                {
+                    min = produkts[i];
+                }
+            }
+            Console.WriteLine($"Najtańszy produkt to {min.Nazwa}, kosztuje {min.Cena}");
+        }
+
+        private static void NajdrozszyProdukt(Produkt[] produkts, string szukane)
+        {
+            Produkt max = produkts[0];
+            for(int i = 0; i < produkts.Length; i++)
+            {
+                if (produkts[i].Cena > max.Cena)
+                {
+                    max = produkts[i];
+                }
+            }
+            Console.WriteLine($"Najdroższy produkt to {max.Nazwa}, kosztuje {max.Cena}");
+        }
+
+        private static void WyszukajBinarnie(Produkt[] produkts, string szukane)
+        {
+            int left = 0;
+            int right = produkts.Length - 1;
+            while(left <= right)
+            {
+                int mid = (left + right) / 2;
+                int wynik = produkts[mid].Nazwa.CompareTo(szukane);
+                if( wynik == 0)
+                {
+                    Console.WriteLine($"{szukane} znaleziono na indeksie {mid}");
+                    return;
+                }
+                if (wynik > 0)
+                {
+                    right = mid - 1;
+                }
+                else left = mid + 1;
+            }
+            Console.WriteLine("Nie znaleziono produktu.");
+        }
+
+        private static void WyszukajLiniowo(Produkt[] produkts, string szukane)
+        {
+            for (int i = 0; i < produkts.Length; i++)
+            {
+                for(int j = 0;j<produkts.Length; j++)
+                {
+                    if(produkts[i].Nazwa == szukane)
+                    {
+                        Console.WriteLine($"{szukane} znaleziono na indeksie {i}");
+                        return;
+                    }
+                }
+            }
+        }
+
+        private static void SortujAlfabetycznie(Produkt[] produkts)
+        {
+            for(int i = 0; i < produkts.Length-1; i++)
+            {
+                for (int j = 0; j< produkts.Length - 1 - i; j++)
+                {
+                    if (produkts[j].Nazwa.CompareTo(produkts[j + 1].Nazwa) > 0)
+                    {
+                        Produkt temp = produkts[j];
+                        produkts[j] = produkts[j + 1];
+                        produkts[j + 1] = temp;
+                    }
+                }
+            }
+            
+        }
+    }
+}
 
