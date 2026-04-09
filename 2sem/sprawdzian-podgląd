@@ -1,0 +1,166 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace sprawdSp
+{
+    class Sorter
+    {
+        public int[] Array { get; set; }
+        public Sorter(int[] array)
+        {
+            this.Array = array; 
+        }
+        public void SelectionSort(int[] array)
+        {
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                int minIndex = i;
+                for (int j = i + 1; j < array.Length; j++)
+                {
+                    if (array[j] < array[minIndex])
+                    {
+                        minIndex = j;
+                    }
+                }
+                int temp = array[i];
+                array[i] = array[minIndex];
+                array[minIndex] = temp;
+
+
+
+            }
+        }
+    }
+
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int[] arr = { 2, 5, 3, 9, 5, 7, 1 };
+            //zad1
+            SelectionSort(arr);
+            foreach (int i in arr)
+            {
+                Console.WriteLine(i);
+            }
+            //zad2
+            int[] arr1 = { 2, 5, 3, 9, 5, 7, 1 };
+            InsertionSortWithCount(arr1);
+            foreach (int r in arr)
+            {
+                Console.WriteLine(r);
+            }
+
+
+            Sorter sort1 = new Sorter(arr);
+
+
+            //zad4
+            int[] tab = new int[15];
+            Random rnd = new Random();
+            for (int i = 0; i < tab.Length; i++)
+            {
+                tab[i] = rnd.Next(0, 100);
+            }
+            int[] tab2 = new int[tab.Length];
+            for (int i = 0; (i < tab.Length); i++)
+            {
+                tab2[i] = i;
+            }
+            SortowaniePrzezWybieranie(tab);
+            SortowaniePrzezWstawianie(tab2);
+            Console.WriteLine("Posortowana tablica 1");
+            foreach(var i in tab)
+            {
+                Console.WriteLine(i);
+            }
+            Console.WriteLine("Posortowana tablica 2");
+            foreach (var i in tab)
+            {
+                Console.WriteLine(i);
+            }
+
+
+        }
+
+        private static void SortowaniePrzezWstawianie(int[] tab2)
+        {
+            for (int i = 0; i < tab2.Length; i++)
+            {
+                int key = tab2[i];
+                int j = i - 1;
+                while (j >= 0 && tab2[j + 1] > key)
+                {
+                    tab2[j + 1] = tab2[j];
+                    j--;
+                }
+                tab2[j + 1] = key;
+
+            }
+        }
+
+        private static void SortowaniePrzezWybieranie(int[] tab)
+        {
+            for (int i = 0; i < tab.Length - 1; i++)
+            {
+                int minIndex = i;
+                for (int j = i + 1; j < tab.Length; j++)
+                {
+                    if (tab[j] < tab[minIndex])
+                    {
+                        minIndex = j;
+                    }
+                }
+                int temp = tab[i];
+                tab[i] = tab[minIndex];
+                tab[minIndex] = temp;
+
+
+            }
+        }
+
+        private static void InsertionSortWithCount(int[] arr1)
+        {
+            int count = 0;
+            for (int i = 0; i < arr1.Length; i++)
+            {
+                int key = arr1[i];
+                int j = i - 1;
+                while (j >= 0 && arr1[j + 1] > key)
+                {
+                    arr1[j + 1] = arr1[j];
+                    j--;
+                }
+                arr1[j+1] = key;
+                count++;
+
+            }
+            Console.WriteLine($"Liczba wykonanych zmian: {count}");
+        }
+
+        private static void SelectionSort(int[] arr)
+        {
+            for (int i = 0; i < arr.Length-1; i++)
+            {
+                int minIndex = i;
+                for (int j = i+1; j < arr.Length; j++)
+                {
+                    if (arr[j] < arr[minIndex])
+                    {
+                        minIndex = j;
+                    }
+                }
+                int temp = arr[i];
+                arr[i] = arr[minIndex];
+                arr[minIndex] = temp;
+                
+
+            }
+            
+        }
+    }
+}
+
