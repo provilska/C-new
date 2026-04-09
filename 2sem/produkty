@@ -67,13 +67,24 @@ namespace ConsoleApp2
             Produkt najtanszyProdukt = produkty[0];
             for (int i = 0; i < produkty.Length; i++)
             {
-                if (produkty[i].Cena > najtanszyProdukt.Cena)
+                if (produkty[i].Cena < najtanszyProdukt.Cena)
                 {
                     najtanszyProdukt = produkty[i];
                 }
             }
             Console.WriteLine($"Najtańszy produkt to {najtanszyProdukt.Nazwa}, kosztuje {najtanszyProdukt.Cena}");
 
+            SredniaCenProduktow(produkty);
+        }
+
+        private static void SredniaCenProduktow(Produkt[] produkty)
+        {
+            decimal sum = 0;
+            for (int i = 0;i < produkty.Length; i++)
+            {
+                sum+= produkty[i].Cena;
+            }
+            Console.WriteLine($"Średnia cena wszystkich produktów to {sum / produkty.Length}");
         }
 
         private static void WyszukajBinarnie(Produkt[] produkty, string szukane)
@@ -125,4 +136,3 @@ namespace ConsoleApp2
         }
     }
 }
-
