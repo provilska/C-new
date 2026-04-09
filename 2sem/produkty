@@ -1,1 +1,128 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class Produkt
+    {
+        public string Nazwa { get; set; }
+        public decimal Cena { get; set; }
+
+        public Produkt(string nazwa, decimal cena)
+        {
+            Nazwa = nazwa;
+            Cena = cena;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Produkt[] produkty = new Produkt[10]
+            {
+                new Produkt("masło", 7),
+                new Produkt ("chleb", 2),
+                new Produkt ("jajka", 12),
+                new Produkt("ryz", 3),
+                new Produkt("mąka", 5),
+                new Produkt("lego", 20),
+                new Produkt("jabłka", 25),
+                new Produkt("gruszka", 19),
+                new Produkt("mango", 9),
+                new Produkt("miod", 23)
+            };
+
+            Console.WriteLine("Lista produktów przed sortowaniem:\n");
+            foreach (var i in produkty)
+            {
+                Console.WriteLine($"{i.Nazwa} -> {i.Cena} zł");
+            }
+
+            SortowanieAlfabetycznie(produkty);
+
+            Console.WriteLine("Lista produktów po sortowaniu:\n");
+            foreach (var i in produkty)
+            {
+                Console.WriteLine($"{i.Nazwa} -> {i.Cena} zł");
+            }
+
+            Console.WriteLine("Podaj szukany produkt: ");
+            string szukane = Console.ReadLine();
+            WyszukajLiniowo(produkty, szukane);
+            WyszukajBinarnie(produkty, szukane);
+
+            Produkt najdroższyProdukt = produkty[0];
+            for (int i = 0; i < produkty.Length; i++)
+            {
+                if(produkty[i].Cena > najdroższyProdukt.Cena)
+                {
+                    najdroższyProdukt = produkty[i];
+                }
+            }
+            Console.WriteLine($"Najdroższy produkt to {najdroższyProdukt.Nazwa}, kosztuje {najdroższyProdukt.Cena}");
+
+            Produkt najtanszyProdukt = produkty[0];
+            for (int i = 0; i < produkty.Length; i++)
+            {
+                if (produkty[i].Cena > najtanszyProdukt.Cena)
+                {
+                    najtanszyProdukt = produkty[i];
+                }
+            }
+            Console.WriteLine($"Najtańszy produkt to {najtanszyProdukt.Nazwa}, kosztuje {najtanszyProdukt.Cena}");
+
+        }
+
+        private static void WyszukajBinarnie(Produkt[] produkty, string szukane)
+        {
+            int lewy = 0;
+            int prawy = produkty.Length - 1;
+            while (lewy <= prawy)
+            {
+                int mid = (lewy + prawy) / 2;
+                int wynik = produkty[mid].Nazwa.CompareTo(szukane);
+
+                if (wynik == 0)
+                {
+                    Console.WriteLine($"Produkt {szukane} znaleziono, kosztuje {produkty[mid].Cena} zł");
+                }
+                if (wynik > 0)
+                    prawy = mid - 1;
+                else
+                    lewy = mid + 1;
+            }
+       
+        }
+
+        private static void WyszukajLiniowo(Produkt[] produkty, string szukane)
+        {
+            for (int i = 0; i < produkty.Length; i++)
+            {
+                if(produkty[i].Nazwa == szukane)
+                {
+                    Console.WriteLine($"Produkt {szukane} znaleziono, kosztuje {produkty[i].Cena} zł");
+                }
+            }
+        }
+
+        private static void SortowanieAlfabetycznie(Produkt[] produkty)
+        {
+            for (int i = 0; i < produkty.Length - 1; i++)
+            {
+                for (int j = 0; j < produkty.Length - 1 - i; j++)
+                {
+                    if (produkty[j].Nazwa.CompareTo(produkty[j + 1].Nazwa) > 0)
+                    {
+                        Produkt temp = produkty[j];
+                        produkty[j] = produkty[j + 1];
+                        produkty[j + 1] = temp;
+                    }
+                }
+            }
+        }
+    }
+}
 
