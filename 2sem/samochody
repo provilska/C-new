@@ -1,0 +1,48 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp2
+{
+    class Samochod
+    {
+        public string Marka { get; set; }
+        public int RokProdukcji { get; set; }
+        public int Przebieg { get; set; }
+
+        public Samochod(string marka, int rok, int przebieg)
+        {
+            Marka = marka;
+            RokProdukcji = rok;
+            Przebieg = przebieg;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Samochod[] samochody = new Samochod[7]
+            {
+                new Samochod("opel", 2006, 20000),
+                new Samochod("toyota", 2007, 38000),
+                new Samochod("ford", 2016, 320000),
+                new Samochod("picasso", 2010, 50000),
+                new Samochod("peugeot", 2006, 40000),
+                new Samochod("hyundai", 2020, 200000),
+                new Samochod("bmw", 20018, 100000)
+            };
+            DateTime data = DateTime.Now;
+            int count = 0;
+
+            for (int i = 0; i < samochody.Length; i++)
+            {
+                if (data.Year  - samochody[i].RokProdukcji > 10){
+                    count++;
+                }
+            }
+            Console.WriteLine($"Ilość samochodów starszych niż 10 lat: {count}");
+        }
+    }
+}
