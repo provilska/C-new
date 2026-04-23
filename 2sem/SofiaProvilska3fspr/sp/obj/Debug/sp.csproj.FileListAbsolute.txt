@@ -1,0 +1,7 @@
+C:\Users\uczen\Desktop\SofiaProvilska3fspr\sp\bin\Debug\sp.exe.config
+C:\Users\uczen\Desktop\SofiaProvilska3fspr\sp\bin\Debug\sp.exe
+C:\Users\uczen\Desktop\SofiaProvilska3fspr\sp\bin\Debug\sp.pdb
+C:\Users\uczen\Desktop\SofiaProvilska3fspr\sp\obj\Debug\sp.csproj.AssemblyReference.cache
+C:\Users\uczen\Desktop\SofiaProvilska3fspr\sp\obj\Debug\sp.csproj.CoreCompileInputs.cache
+C:\Users\uczen\Desktop\SofiaProvilska3fspr\sp\obj\Debug\sp.exe
+C:\Users\uczen\Desktop\SofiaProvilska3fspr\sp\obj\Debug\sp.pdb
