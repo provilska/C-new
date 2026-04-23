@@ -1,0 +1,205 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp12
+{
+    class Uczen
+    {
+        public string Imie { get; set; }
+        public double Srednia { get; set; }
+
+        public Uczen(string imie, double srednia)
+        {
+            Imie = imie;
+            Srednia = srednia;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Uczen[] uczniowie = new Uczen[5]
+            {
+                new Uczen ("Sofia", 2.6),
+                new Uczen ("Maksym", 3.0),
+                new Uczen ("Michał", 4.8),
+                new Uczen ("Lena", 3.2),
+                new Uczen ("David", 5.0)
+            };
+
+            //SortowanieInserion(uczniowie);
+            SortowanieSletionSort(uczniowie);
+            foreach (var p in uczniowie)
+            {
+                Console.WriteLine($"{p.Srednia} -> {p.Imie}");
+            }
+            Console.WriteLine("Podaj szukane imię: \n");
+            string szukane1 = Console.ReadLine();
+
+            WyszukiwaniePoImieniu(szukane1, uczniowie);
+
+
+            int[] tab = { 9, 4, 6, 2, 7 };
+
+            //SortowanieSelectionSort(tab);
+            SortowanieInsertionSort(tab);
+
+            foreach (var p in tab)
+            {
+                Console.WriteLine(p);
+            }
+            Random r = new Random();
+            int[] tab1 = new int[10];
+            for (int i = 0; i < tab1.Length; i++)
+            {
+                tab1[i] = r.Next(10,100);
+                
+            }
+            foreach (var p in tab1)
+            {
+                Console.WriteLine(p);
+            }
+            InsertionSort(tab1);
+            Console.WriteLine("Po sortowaniu:");
+            foreach (var v in tab1)
+            {
+                Console.WriteLine(v);
+            }
+            //int szukane = 7;
+            //int binar = WyszukiwanieBinarne(tab, szukane);
+            //Console.WriteLine($"Znaleziono na indeksie {binar}");
+        }
+
+        private static void InsertionSort(int[] tab1)
+        {
+            for (int i = 1;i < tab1.Length; i++)
+            {
+                int key = tab1[i];
+                int j = i - 1;
+                while(j >= 0 && tab1[j]>key)
+                {
+                    tab1[j+1]=tab1[j];
+                    j--;
+                }
+                tab1[j+1]= key;
+            }
+        }
+
+        private static void SortowanieSletionSort(Uczen[] uczniowie)
+        {
+            for (int i = 0; i < uczniowie.Length-1; i++)
+            {
+                int min = i;
+                for(int j = i+1; j < uczniowie.Length; j++)
+                {
+                    if (uczniowie[j].Srednia.CompareTo(uczniowie[min].Srednia) < 0)
+                    {
+                        min = j;
+                    }
+                    var temp = uczniowie[i];
+                    uczniowie[i] = uczniowie[min];
+                    uczniowie[min] = temp;
+                }
+            }
+        }
+
+        private static void SortowanieInserion(Uczen[] uczniowie)
+        {
+            for (int i = 1; i < uczniowie.Length; i++)
+            {
+                Uczen key = uczniowie[i];
+                int j = i - 1;
+                while (j>= 0 && uczniowie[j].Imie.CompareTo(key.Imie) > 0)
+                {
+                    uczniowie[j + 1] = uczniowie[j];
+                    j--;
+                }
+                uczniowie[j+1] = key;
+            }
+        }
+
+        private static void WyszukiwaniePoImieniu(string szukane1, Uczen[] uczniowie)
+        {
+            int left = 0;
+            int right = uczniowie.Length - 1;
+            while (left <= right)
+            {
+                int mid = (left + right) / 2;
+                int wynik = uczniowie[mid].Imie.CompareTo(szukane1);
+                if (wynik == 0)
+                {
+                    Console.WriteLine($"{szukane1} znaleziono na indeksie {mid}");
+                    return;
+                }
+                if (wynik < 0)
+                {
+                    left = mid + 1;
+                }
+                else
+                {
+                    right = mid - 1;
+                }
+
+            }
+        }
+
+        private static void SortowanieInsertionSort(int[] tab)
+        {
+            for (int i = 1; i < tab.Length; i++)
+            {
+                int key = tab[i];
+                int j = i - 1;
+                while (j >= 0 && tab[j]>key)
+                {
+                    tab[j + 1] = tab[j];
+                    j--;
+                }
+                tab[j+1] = key;
+            }
+        }
+
+        //private static int WyszukiwanieBinarne(int[] tab, int szukane)
+        //{
+        //    int left = 0;
+        //    int right = tab.Length-1;
+        //    while (left <= right)
+        //    {
+        //        int mid = (left+right)/2;
+        //        if(tab[mid] == szukane)
+        //        {
+        //           return mid;
+        //        }
+        //        if(szukane > tab[mid])
+        //        {
+        //            left = mid+1;
+        //        }
+        //        else
+        //        {
+        //            right = mid-1;
+        //        }
+        //    }
+        //    return -1;
+        //}
+
+        private static void SortowanieSelectionSort(int[] tab)
+        {
+            for (int i = 0; i < tab.Length-1; i++)
+            {
+                int min = i;
+                for(int j = i +1; j < tab.Length;j++)
+                {
+                    if (tab[j] < tab[min])
+                    {
+                        min = j;
+                    }
+                }
+                int temp = tab[i];
+                tab[i] = tab[min];
+                tab[min] = temp;
+            }
+        }
+    }
+}
