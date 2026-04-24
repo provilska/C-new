@@ -1,0 +1,7 @@
+C:\Users\User\source\repos\SzyfrCezara.Test\obj\Debug\net10.0\SzyfrCezara.Test.csproj.AssemblyReference.cache
+C:\Users\User\source\repos\SzyfrCezara.Test\obj\Debug\net10.0\SzyfrCezara.Test.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\User\source\repos\SzyfrCezara.Test\obj\Debug\net10.0\SzyfrCezara.Test.gentestingplatformentrypointinputcache.cache
+C:\Users\User\source\repos\SzyfrCezara.Test\obj\Debug\net10.0\SzyfrCezara.Test.genautoregisteredextensionsinputcache.cache
+C:\Users\User\source\repos\SzyfrCezara.Test\obj\Debug\net10.0\SzyfrCezara.Test.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\SzyfrCezara.Test\obj\Debug\net10.0\SzyfrCezara.Test.AssemblyInfo.cs
+C:\Users\User\source\repos\SzyfrCezara.Test\obj\Debug\net10.0\SzyfrCezara.Test.csproj.CoreCompileInputs.cache

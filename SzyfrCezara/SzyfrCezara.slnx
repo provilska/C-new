@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../SzyfrCezara.Test/SzyfrCezara.Test.csproj">
+    <BuildDependency Project="SzyfrCezara.csproj" />
+  </Project>
+  <Project Path="SzyfrCezara.csproj" />
+</Solution>
