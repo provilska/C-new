@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SofiaProvilskaSpr
+{
+    internal class Program
+    {
+        class KodDostepu
+        {
+            public string Kod { get; set; }
+            public KodDostepu(string kod)
+            {
+                Kod = kod;
+            }
+      
+        }
+
+        class Produkt
+        {
+            public string Nazwa {  get; set; }
+            public double Cena { get; set; }
+            public Produkt(string nazwa, double cena)
+            {
+                Nazwa = nazwa;
+                Cena = cena;
+            }
+        } 
+        class Magazyn
+        {
+            //int LiczDrozsze(Produkt[] produkty, int indeks, double CenaMinimalna)
+            //
+
+            //}
+        }
+        static void Main(string[] args) { 
+
+            //1
+            string kod = "ab12cd7x";
+            int indeks = 0;
+            Console.WriteLine( LiczCyfry(indeks));
+
+            //2
+            //Produkt produkty = new Produkt[4]
+            //{
+               // new Produkt("Klawiatura" , 120),
+               // new Produkt("Mysz", 45),
+               // new Produkt("Monitor", 750),
+               // new Produkt("Pendrive", 30)
+            //};
+
+        }
+
+        private static int LiczCyfry(int indeks)
+        {
+            //metoda rekurencyjna
+
+            int suma = 0;
+            string kod = "ab12cd7x";
+            while (indeks < kod.Length)
+            {
+                suma = LiczCyfry(kod[indeks - 1]) + LiczCyfry(kod[indeks - 2]);
+                indeks++;
+            }
+            return suma;
+        }
+    }
+}
