@@ -1,0 +1,100 @@
+//ciąg fibbonacciego
+using System;
+
+class Program
+{
+    static int Fibonacci(int n)
+    {
+        if (n <= 1)
+            return n;
+
+        return Fibonacci(n - 1) + Fibonacci(n - 2);
+    }
+
+    static void Main()
+    {
+        Console.Write("Podaj n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Wynik: " + Fibonacci(n));
+    }
+}
+
+//palindrom
+using System;
+
+class Program
+{
+    static bool CzyPalindrom(string tekst)
+    {
+        int lewy = 0;
+        int prawy = tekst.Length - 1;
+
+        while (lewy < prawy)
+        {
+            if (tekst[lewy] != tekst[prawy])
+                return false;
+
+            lewy++;
+            prawy--;
+        }
+
+        return true;
+    }
+
+    static void Main()
+    {
+        Console.Write("Podaj tekst: ");
+        string tekst = Console.ReadLine();
+
+        if (CzyPalindrom(tekst))
+            Console.WriteLine("To jest palindrom");
+        else
+            Console.WriteLine("To nie jest palindrom");
+    }
+}
+
+//zamiana na binarny
+using System;
+
+class Program
+{
+    static void Binarnie(int n)
+    {
+        if (n > 1)
+            Binarnie(n / 2);
+
+        Console.Write(n % 2);
+    }
+
+    static void Main()
+    {
+        Console.Write("Podaj liczbę: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.Write("Binarnie: ");
+        Binarnie(n);
+    }
+}
+
+//silnia
+using System;
+
+class Program
+{
+    static int Silnia(int n)
+    {
+        if (n == 0 || n == 1)
+            return 1;
+
+        return n * Silnia(n - 1);
+    }
+
+    static void Main()
+    {
+        Console.Write("Podaj liczbę: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Silnia = " + Silnia(n));
+    }
+}
